@@ -6,7 +6,7 @@
 ## Installation
 
 ```bash
-npm install react-highlight-pop
+npm install react-text-highlight-popup
 ```
 
 ## Usage
