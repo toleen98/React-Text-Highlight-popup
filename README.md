@@ -105,7 +105,4 @@ prop|Type|description
 ---|---|---
 text|string| The text to highlight.
 range|{ from: number, to: number }[]| An array of objects representing the range of text to highlight. Each object should have a from and to property representing the start and end indexes of the range.
-popupActions|{
-     label: string
-    action: (selectedText: string, textRange: { from: number, to: number }) => void
-}| An array of React elements representing the custom actions to display in the popup.
+popupActions|{label: string,action: (selectedText: string, textRange: { from: number, to: number }) => void}| An array of React elements representing the custom actions to display in the popup.
