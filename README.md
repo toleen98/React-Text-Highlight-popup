@@ -17,16 +17,17 @@ To use react-text-highlight-popup, import the TextHighlightPopup component and p
 import React from 'react';
 import { HighlightedText } from 'react-text-highlight-popup';
 
-interface Props {
-  text: string;
-  range: {
-    from: number;
-    to: number;
-  }[];
-  popupActions?: JSX.Element[];
-  highlightedTextClass?: string;
-  popupClass?: string;
+interface Range {
+  from: number
+  to: number
 }
+interface props {
+  text: string
+  Range: Range[]
+  popupActions?: {
+    label: string
+    action: (selectedText: string, textRange: Range) => void
+  }[]
 
 const ExampleComponent: React.FC<Props> = ({
   text,
@@ -49,7 +50,7 @@ const ExampleComponent: React.FC<Props> = ({
 The  **TextHighlightPopup**  component takes the following props:
   -  **text**  (required): The text to highlight.
   - **range** (required): An array of objects representing the range of text to highlight. Each object should have a from and to property representing the start and end indexes of the range.
-  - **popupActions** (optional): An array of React elements representing the custom actions to display in the popup.
+  - **popupActions** (optional): An array of objects that define the actions to display in the popup. Each object should have a **label** and an **action** property. The **action** property is a function that will be called with the selected text and the text range when the user clicks on the action.
   - **highlightedTextClass** (optional): A string representing the CSS class to apply to the highlighted text.
   - **popupClass** (optional): A string representing the CSS class to apply to the popup.
   
@@ -64,13 +65,21 @@ import { HighlightedText } from 'react-text-highlight-popup';
 const App: React.FC = () => {
   const text = 'This is some example text to highlight.';
   const range = [{ from: 5, to: 10 }, { from: 18, to: 24 }];
-  const popupActions = [
-    <button key="action-1" onClick={() => console.log('Action 1 clicked')}>
-      Action 1
-    </button>,
-    <button key="action-2" onClick={() => console.log('Action 2 clicked')}>
-      Action 2
-    </button>,
+  const  popupActions = [
+    {
+      label: 'Action 1',
+      action: (selectedText, textRange) => {
+        console.log(`Selected text: ${selectedText}`);
+        console.log(`Text range: ${JSON.stringify(textRange)}`);
+      },
+    },
+    {
+      label: 'Action 2',
+      action: (selectedText, textRange) => {
+        console.log(`Selected text: ${selectedText}`);
+        console.log(`Text range: ${JSON.stringify(textRange)}`);
+      },
+    },
   ];
 
   return (
@@ -96,4 +105,7 @@ prop|Type|description
 ---|---|---
 text|string| The text to highlight.
 range|{ from: number, to: number }[]| An array of objects representing the range of text to highlight. Each object should have a from and to property representing the start and end indexes of the range.
-popupActions|JSX.Element[]| An array of React elements representing the custom actions to display in the popup.
+popupActions|{
+     label: string
+    action: (selectedText: string, textRange: { from: number, to: number }) => void
+}| An array of React elements representing the custom actions to display in the popup.
