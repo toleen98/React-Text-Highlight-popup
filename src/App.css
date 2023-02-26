@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+
+.highlight {
+  background-color:#E9D16C ;
+  padding:3px ;
+  border-radius:  8px;
+}
+
+.popup {
+ position:  absolute; 
+ display:  flex; 
+ align-items:center ;
+ justify-content: space-evenly;
+ --tw-divide-x-reverse: 0;
+ border-right-width: calc(1px * var(--tw-divide-x-reverse));
+ border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
+ border-radius: 0.5rem;
+ padding: 0.5rem;
+ width :100 px;
+ --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+ --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+ box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+ z-index: 50; 
+ background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}

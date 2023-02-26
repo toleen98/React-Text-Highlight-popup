@@ -1,46 +1,99 @@
-# Getting Started with Create React App
+# React Text Highlight Popup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> React Text Highlight Popup is a React component that allows you to highlight text and display a popup with custom actions when the user clicks on the highlighted text "medium-like".
 
-## Available Scripts
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+```bash
+npm install react-highlight-pop
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To use react-text-highlight-popup, import the TextHighlightPopup component and pass it the necessary props:
 
-### `npm test`
+```tsx
+import React from 'react';
+import { HighlightedText } from 'react-text-highlight-popup';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+interface Props {
+  text: string;
+  range: {
+    from: number;
+    to: number;
+  }[];
+  popupActions?: JSX.Element[];
+  highlightedTextClass?: string;
+  popupClass?: string;
+}
 
-### `npm run build`
+const ExampleComponent: React.FC<Props> = ({
+  text,
+  range,
+  popupActions,
+  highlightedTextClass,
+  popupClass,
+}) => (
+  <div>
+    <HighlightedText
+      text={text}
+      range={range}
+      popupActions={popupActions}
+      highlightedTextClass={highlightedTextClass}
+      popupClass={popupClass}
+    />
+  </div>
+);
+```
+The  **TextHighlightPopup**  component takes the following props:
+  -  **text**  (required): The text to highlight.
+  - **range** (required): An array of objects representing the range of text to highlight. Each object should have a from and to property representing the start and end indexes of the range.
+  - **popupActions** (optional): An array of React elements representing the custom actions to display in the popup.
+  - **highlightedTextClass** (optional): A string representing the CSS class to apply to the highlighted text.
+  - **popupClass** (optional): A string representing the CSS class to apply to the popup.
+  
+## Example
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here is an example usage of react-text-highlight-popup: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```tsx
+import React from 'react';
+import { HighlightedText } from 'react-text-highlight-popup';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const App: React.FC = () => {
+  const text = 'This is some example text to highlight.';
+  const range = [{ from: 5, to: 10 }, { from: 18, to: 24 }];
+  const popupActions = [
+    <button key="action-1" onClick={() => console.log('Action 1 clicked')}>
+      Action 1
+    </button>,
+    <button key="action-2" onClick={() => console.log('Action 2 clicked')}>
+      Action 2
+    </button>,
+  ];
 
-### `npm run eject`
+  return (
+    <div>
+      <HighlightedText
+        text={text}
+        range={range}
+        popupActions={popupActions}
+        highlightedTextClass="highlighted"
+        popupClass="popup"
+      />
+    </div>
+  );
+};
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default App;
+```
+In this example, the text "example" and "highlight" will be highlighted, and a popup with two buttons will be displayed when the user clicks on the highlighted text.
+  
+  
+## Props
+prop|Type|description
+---|---|---
+text|string| The text to highlight.
+range|{ from: number, to: number }[]| An array of objects representing the range of text to highlight. Each object should have a from and to property representing the start and end indexes of the range.
+popupActions|JSX.Element[]| An array of React elements representing the custom actions to display in the popup.
