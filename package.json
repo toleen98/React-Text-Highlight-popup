@@ -1,6 +1,6 @@
 {
   "name": "react-text-highlight-popup",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -10,12 +10,12 @@
     "LICENSE",
     "README.md"
   ],
-    "scripts": {
+  "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
-"build:esm": "tsc",
-"build:cjs": "tsc --module commonjs --outDir dist/cjs",
-"prepare": "npm run build",
-"prepublishOnly": " npm run prettier && npm run lint",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "prepare": "npm run build",
+    "prepublishOnly": " npm run prettier && npm run lint",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
   },
