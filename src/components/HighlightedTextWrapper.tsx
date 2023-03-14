@@ -3,11 +3,11 @@ import { useHighlightedTextHook } from '../hooks/useHighlightedTextHook'
 import { HighlightText } from './HighlightTextComponent'
 import './App.css'
 
-interface Range {
+export interface Range {
   from: number
   to: number
 }
-interface props {
+export interface HighlightedTextProps {
   text: string
   Range: Range[]
   popupActions?: {
@@ -18,7 +18,7 @@ interface props {
   popupClass?: string
 }
 
-const HighlightedText = (props: props) => {
+const HighlightedText = (props: HighlightedTextProps) => {
   const { showPopover, axis, onMouseUp, highlight, selectedText, textRange } = useHighlightedTextHook()
   return (
     <div>
@@ -30,8 +30,10 @@ const HighlightedText = (props: props) => {
           onMouseDown={(e) => e.preventDefault()}
         >
           {props.popupActions ? (
-            props.popupActions.map((item) => (
-              <button onClick={() => item.action(selectedText, textRange)}>{item.label}</button>
+            props.popupActions.map((item, i) => (
+              <button key={item.label + i} onClick={() => item.action(selectedText, textRange)}>
+                {item.label}
+              </button>
             ))
           ) : (
             <div

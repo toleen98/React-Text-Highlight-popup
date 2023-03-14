@@ -1,3 +1,3 @@
-import HighlightedText from './components/HighlightedTextWrapper'
+import HighlightedText, { HighlightedTextProps } from './components/HighlightedTextWrapper'
 
-export { HighlightedText }
+export { HighlightedText, HighlightedTextProps }
