@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHighlightedTextHook } from '../hooks/useHighlightedTextHook'
 import { HighlightText } from './HighlightTextComponent'
-import './App.css'
+import '../App.css'
 
 export interface Range {
   from: number
